@@ -5,13 +5,28 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.AsyncTask;
 import android.util.Log;
 
+import com.amazonaws.auth.CognitoCachingCredentialsProvider;
+import com.amazonaws.mobileconnectors.cognito.CognitoSyncManager;
+import com.amazonaws.mobileconnectors.cognito.Dataset;
+import com.amazonaws.mobileconnectors.cognito.DefaultSyncCallback;
+import com.amazonaws.regions.Regions;
+
+import net.rubicon.indepth.db.ServerFacade;
 import net.rubicon.indepth.ui.utility.PermissionsHandler;
 import net.rubicon.indepth.ui.utility.UserPreferenceHelper;
 
 import java.util.List;
 import java.util.Map;
+
+
+import com.amazonaws.auth.CognitoCachingCredentialsProvider;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.dynamodbv2.*;
+//import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.*;
+import com.amazonaws.services.dynamodbv2.model.*;
 
 /**
  *
@@ -39,9 +54,120 @@ public class InDepthApplication extends Application {
             initializeDatabase();
         }
 
+
+        ServerFacade serverFacade = ServerFacade.getInstance(getApplicationContext());
+
+        serverFacade.set("STATUS", "ACTIVE");
+//
+        // Initialize the Amazon Cognito credentials provider
+        CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
+                getApplicationContext(),
+                "us-east-1:36cfbb09-161e-403c-a878-e888cb5312f5", // Identity Pool ID
+                Regions.US_EAST_1 // Region
+        );
+//
+
+//        AmazonDynamoDBClient ddbClient = new AmazonDynamoDBClient(credentialsProvider);
+//
+//        Log.i(LOG_TAG, "Got db client -- " + ddbClient);
+//
+//
+//
+////        QueryRequest
+////        ddbClient.query()
+//
+//
+//        // Create Query request
+//        QueryRequest request = new QueryRequest("InDepthStatus");
+
+//        new DbGet().execute( credentialsProvider );
+
+//        {
+//            TableName = "SampleTable",
+//                    ExclusiveStartKey = startKey,
+//                    KeyConditions = keyConditions
+//        };
+
+        // Issue request
+
+//        QueryResult result = ddbClient.query(request);
+//
+//        Log.i(LOG_TAG, "db result -- " + result);
+
+//
+//
+//        CognitoSyncManager syncClient = new CognitoSyncManager(
+//                getApplicationContext(),
+//                Regions.US_EAST_1, // Region
+//                credentialsProvider);
+//
+//// Create a record in a dataset and synchronize with the server
+//        Dataset dataset = syncClient.openOrCreateDataset("myDataset");
+//        dataset.put("myKey", "myValue");
+//        dataset.synchronize(new DefaultSyncCallback() {
+//            @Override
+//            public void onSuccess(Dataset dataset, List newRecords) {
+//                //Your handler code here
+//                Log.i(LOG_TAG, "Added key & value!!!");
+//
+//
+//                String value = dataset.get("myKey");
+//
+//                Log.i(LOG_TAG, "Got value from dataset! " + value);
+//            }
+//        });
+
         Log.i(LOG_TAG, "Application created");
+
     }
 
+
+    class DbGet extends AsyncTask<CognitoCachingCredentialsProvider, Void, String> {
+
+        private Exception exception;
+
+        QueryResult result;
+
+        protected String doInBackground(CognitoCachingCredentialsProvider... credentialsProviders) {
+            try {
+
+                AmazonDynamoDBClient ddbClient = new AmazonDynamoDBClient(credentialsProviders[0]);
+
+                Log.i(LOG_TAG, "Got db client -- " + ddbClient);
+
+//        QueryRequest
+//        ddbClient.query()
+
+
+                // Create Query request
+                QueryRequest request = new QueryRequest("InDepthStatus");
+
+                request.setKeyConditionExpression("stat = :STATUS");
+
+//                'KeyConditionExpression' => 'feed_guid = :v_guid1 or feed_guid = :v_guid2',
+
+
+//                KeyConditionExpression, :artist
+
+                result = ddbClient.query(request);
+
+                Log.i(LOG_TAG, "result -- " + result);
+
+                return "ok";
+            } catch (Exception e) {
+                Log.i(LOG_TAG, "ex " + e);
+                this.exception = e;
+                return null;
+            }
+        }
+
+        protected void onPostExecute(CognitoCachingCredentialsProvider provider) {
+            // TODO: check this.exception
+            // TODO: do something with the feed
+
+            Log.i(LOG_TAG, "DB QUERY DONE " + result);
+        }
+    }
 
     /**
      *

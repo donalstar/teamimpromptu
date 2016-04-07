@@ -31,6 +31,7 @@ public class PersonTable implements DataBaseTable {
             + Columns.ROLE + " TEXT NOT NULL,"
             + Columns.STATUS + " TEXT NOT NULL,"
             + Columns.SKILLS + " TEXT NOT NULL,"
+            + Columns.CERTIFICATIONS + " TEXT NOT NULL,"
             + Columns.TEAM + " TEXT NOT NULL"
             + ");";
 
@@ -40,6 +41,7 @@ public class PersonTable implements DataBaseTable {
         public static final String ROLE = "role";
         public static final String STATUS = "status";
         public static final String SKILLS = "skills";
+        public static final String CERTIFICATIONS = "certifications";
         public static final String TEAM = "team";
     }
 
@@ -53,6 +55,7 @@ public class PersonTable implements DataBaseTable {
         PROJECTION_MAP.put(PersonTable.Columns.ROLE, PersonTable.Columns.ROLE);
         PROJECTION_MAP.put(PersonTable.Columns.STATUS, PersonTable.Columns.STATUS);
         PROJECTION_MAP.put(Columns.SKILLS, Columns.SKILLS);
+        PROJECTION_MAP.put(Columns.CERTIFICATIONS, Columns.CERTIFICATIONS);
         PROJECTION_MAP.put(Columns.TEAM, PersonTable.Columns.TEAM);
     }
 

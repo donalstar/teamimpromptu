@@ -27,7 +27,7 @@ public class DataBaseScenario {
 
     public void loadTeam(Context context) {
         String names[] = {
-                "Stuart",
+                "Lorien",
                 "Donal",
                 "Perry",
                 "Jonas"
@@ -126,7 +126,6 @@ public class DataBaseScenario {
 
     }
 
-
     public void loadPersons(Context context) {
         String names[] = {
                 "Donal"
@@ -142,7 +141,11 @@ public class DataBaseScenario {
         };
 
         String skills[] = {
-                "heavy equipment, sawyer"
+                "doctor"
+        };
+
+        String certifications[] = {
+                "MD"
         };
 
         String status[] = {
@@ -161,6 +164,7 @@ public class DataBaseScenario {
             model.setUsername(usernames[i]);
             model.setRole(roles[i]);
             model.setSkills(skills[i]);
+            model.setCertifications(certifications[i]);
             model.setStatus(status[i]);
             model.setTeam(teams[i]);
 

@@ -20,6 +20,7 @@ public class PersonModel implements DataBaseModel, Serializable {
     private String _role;
     private String _status;
     private String _skills;
+    private String _certifications;
     private String _team;
 
     @Override
@@ -31,6 +32,7 @@ public class PersonModel implements DataBaseModel, Serializable {
         _role = "Unknown";
         _status = "Unknown";
         _skills = "Unknown";
+        _certifications = "Unknown";
         _team = "Unknown";
     }
 
@@ -43,6 +45,7 @@ public class PersonModel implements DataBaseModel, Serializable {
         cv.put(PersonTable.Columns.ROLE, _role);
         cv.put(PersonTable.Columns.STATUS, _status);
         cv.put(PersonTable.Columns.SKILLS, _skills);
+        cv.put(PersonTable.Columns.CERTIFICATIONS, _certifications);
         cv.put(PersonTable.Columns.TEAM, _team);
 
         return cv;
@@ -57,6 +60,7 @@ public class PersonModel implements DataBaseModel, Serializable {
         _role = cursor.getString(cursor.getColumnIndex(PersonTable.Columns.ROLE));
         _status = cursor.getString(cursor.getColumnIndex(PersonTable.Columns.STATUS));
         _skills = cursor.getString(cursor.getColumnIndex(PersonTable.Columns.SKILLS));
+        _certifications = cursor.getString(cursor.getColumnIndex(PersonTable.Columns.CERTIFICATIONS));
         _team = cursor.getString(cursor.getColumnIndex(PersonTable.Columns.TEAM));
     }
 
@@ -108,6 +112,14 @@ public class PersonModel implements DataBaseModel, Serializable {
 
     public void setSkills(String _skills) {
         this._skills = _skills;
+    }
+
+    public String getCertifications() {
+        return _certifications;
+    }
+
+    public void setCertifications(String _certifications) {
+        this._certifications = _certifications;
     }
 
     public String getTeam() {

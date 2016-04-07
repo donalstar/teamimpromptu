@@ -18,6 +18,7 @@ import android.widget.TextView;
 import net.rubicon.indepth.R;
 import net.rubicon.indepth.chain.CommandFacade;
 import net.rubicon.indepth.db.PersonModel;
+import net.rubicon.indepth.db.ServerFacade;
 
 
 public class ProfileFragment extends Fragment implements FragmentContext {
@@ -30,6 +31,7 @@ public class ProfileFragment extends Fragment implements FragmentContext {
     private TextView _name;
     private TextView _role;
     private TextView _skills;
+    private TextView _certifications;
 
 
     public static ProfileFragment newInstance() {
@@ -56,6 +58,7 @@ public class ProfileFragment extends Fragment implements FragmentContext {
 
         _role = (TextView) view.findViewById(R.id.role);
         _skills = (TextView) view.findViewById(R.id.skills);
+        _certifications = (TextView) view.findViewById(R.id.certifications);
 
         PersonModel person = CommandFacade.getLoggedInUser(getActivity());
 
@@ -63,8 +66,16 @@ public class ProfileFragment extends Fragment implements FragmentContext {
 
         _role.setText(person.getRole());
         _skills.setText(person.getSkills());
+        _certifications.setText(person.getCertifications());
+
 
         Spinner dropdown = (Spinner) view.findViewById(R.id.status);
+
+        ServerFacade serverFacade = ServerFacade.getInstance(getActivity());
+
+        String statusFromServer = serverFacade.get("STATUS");
+
+        Log.i(LOG_TAG, "STATUS from server " + statusFromServer);
 
         int index = person.getStatus().equals("active") ? 0 : 1;
 
@@ -74,6 +85,15 @@ public class ProfileFragment extends Fragment implements FragmentContext {
         dropdown.setAdapter(adapter);
 
         dropdown.setSelection(index);
+
+        Button updateButton = (Button)view.findViewById(R.id.update);
+
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(LOG_TAG, "Update status");
+            }
+        });
 
         return view;
     }
