@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="105dp"
+    android:background="@color/white"
+    android:gravity="bottom"
+    android:orientation="horizontal"
+    android:padding="20dp"
+    android:paddingRight="0dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+
+    <ImageView
+        android:id="@+id/headerImageView"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_profile_default"
+        android:scaleType="fitCenter" />
+
+    <RelativeLayout
+        android:id="@+id/userDetailLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/headerImageView">
+
+        <TextView
+            android:id="@+id/headerUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:paddingLeft="10dp"
+            android:textColor="@color/bright_white"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/headerUserRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/headerUserName"
+            android:layout_gravity="center|left"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black54"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/profileLinkChevron"
+        android:layout_toRightOf="@+id/userDetailLayout"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_chevron_right_white_48pt" />
+</RelativeLayout>

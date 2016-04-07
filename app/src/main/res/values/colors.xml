@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources>
+
+    <color name="primary_dark">#be3e19</color>
+    <color name="tomato">#ef4f23</color>
+    <color name="marigold">#ffbf00</color>
+    <color name="zest">#E67E22</color>
+    <color name="mid_green">#48b04b</color>
+    <color name="gossip">#4487D37C</color>
+    <color name="darkSeaGreen">#90c695</color>
+    <color name="paleGrey">#E2E2E2</color>
+    <color name="white">#eeeeee</color>
+    <color name="semi_white">#80eeeeee</color>
+    <color name="warm_grey_dark">#808080</color>
+    <color name="warm_grey_light">#999999</color>
+    <color name="nav_tab">#666666</color>
+    <color name="caption2">#999999</color>
+    <color name="black87">#DE000000</color>
+    <color name="black54">#8A000000</color>
+    <color name="white70">#b2ffffff</color>
+    <color name="white71">#44ffffff</color>
+    <color name="brownishGrey">#666666</color>
+    <color name="bright_white">#ffffff</color>
+    <color name="cream_can">#22F5D76E</color>
+    <color name="sky_blue">#2196F3</color>
+
+    <!-- -->
+    <color name="window_background">#FFF5F5F5</color>
+
+
+
+    <color name="status_text">#ffffffff</color>
+    <color name="transparent">#00000000</color>
+
+
+    <color name="cararra">#dCdCdC</color>
+</resources>

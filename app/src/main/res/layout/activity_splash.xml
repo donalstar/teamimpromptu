@@ -1,0 +1,88 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.rubicon.indepth.ui.splash.SplashActivity">
+
+
+
+    <TextView
+        android:id="@+id/blurb"
+        style="@style/FieldText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginTop="10dp"
+        android:gravity="left"
+        android:text="IN DEPTH : FIELD MANAGER"/>
+
+
+    <ImageView
+        android:id="@+id/splash_image"
+        android:layout_width="fill_parent"
+        android:layout_height="240dp"
+        android:layout_marginTop="90dp"
+        android:src="@drawable/rubicon" />
+
+    <RelativeLayout
+        android:id="@+id/defaultLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/splash_image">
+
+        <TableLayout
+            android:id="@+id/loginTableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:paddingBottom="20dp"
+            android:stretchColumns="0">
+
+            <TableRow>
+
+                <EditText
+                    android:id="@+id/editUserName"
+                    android:hint="@string/hint_username"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:textColor="@color/warm_grey_dark"
+                    android:textColorHint="@color/warm_grey_dark" />
+            </TableRow>
+
+            <TableRow>
+
+                <EditText
+                    android:id="@+id/editPassword"
+                    android:hint="@string/hint_password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/warm_grey_dark"
+                    android:textColorHint="@color/warm_grey_dark" />
+            </TableRow>
+
+
+
+        </TableLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/buttonsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+
+
+        <Button
+            android:id="@+id/login"
+            style="@style/FormButton"
+            android:enabled="false"
+            android:layout_width="120dp"
+            android:layout_alignParentRight="true"
+            android:text="LOGIN" />
+    </RelativeLayout>
+
+</RelativeLayout>
