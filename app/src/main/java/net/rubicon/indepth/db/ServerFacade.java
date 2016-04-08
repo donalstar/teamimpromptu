@@ -33,20 +33,7 @@ public class ServerFacade {
     }
 
     private ServerFacade(Context context) {
-        // Initialize the Amazon Cognito credentials provider
-        CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
-                context,
-                "us-east-1:36cfbb09-161e-403c-a878-e888cb5312f5", // Identity Pool ID
-                Regions.US_EAST_1 // Region
-        );
 
-        Log.i(LOG_TAG, "Got cred. provider -- " + credentialsProvider);
-
-
-        _syncClient = new CognitoSyncManager(
-                context,
-                Regions.US_EAST_1, // Region
-                credentialsProvider);
 
     }
 

@@ -59,13 +59,7 @@ public class InDepthApplication extends Application {
 
         serverFacade.set("STATUS", "ACTIVE");
 //
-        // Initialize the Amazon Cognito credentials provider
-        CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
-                getApplicationContext(),
-                "us-east-1:36cfbb09-161e-403c-a878-e888cb5312f5", // Identity Pool ID
-                Regions.US_EAST_1 // Region
-        );
-//
+
 
 //        AmazonDynamoDBClient ddbClient = new AmazonDynamoDBClient(credentialsProvider);
 //
@@ -73,49 +67,8 @@ public class InDepthApplication extends Application {
 //
 //
 //
-////        QueryRequest
-////        ddbClient.query()
-//
-//
-//        // Create Query request
-//        QueryRequest request = new QueryRequest("InDepthStatus");
 
-//        new DbGet().execute( credentialsProvider );
 
-//        {
-//            TableName = "SampleTable",
-//                    ExclusiveStartKey = startKey,
-//                    KeyConditions = keyConditions
-//        };
-
-        // Issue request
-
-//        QueryResult result = ddbClient.query(request);
-//
-//        Log.i(LOG_TAG, "db result -- " + result);
-
-//
-//
-//        CognitoSyncManager syncClient = new CognitoSyncManager(
-//                getApplicationContext(),
-//                Regions.US_EAST_1, // Region
-//                credentialsProvider);
-//
-//// Create a record in a dataset and synchronize with the server
-//        Dataset dataset = syncClient.openOrCreateDataset("myDataset");
-//        dataset.put("myKey", "myValue");
-//        dataset.synchronize(new DefaultSyncCallback() {
-//            @Override
-//            public void onSuccess(Dataset dataset, List newRecords) {
-//                //Your handler code here
-//                Log.i(LOG_TAG, "Added key & value!!!");
-//
-//
-//                String value = dataset.get("myKey");
-//
-//                Log.i(LOG_TAG, "Got value from dataset! " + value);
-//            }
-//        });
 
         Log.i(LOG_TAG, "Application created");
 
