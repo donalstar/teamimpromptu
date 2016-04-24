@@ -27,3 +27,26 @@ ___Create a Strike Team___
 * Assign team members/Transfer team members
 * Assign to an engagement/Release from an engagement
 
+**Team Member Mobile Application**
+
+_Team Leader Mode_
+
+* View team members on map
+* View other strike teams on map
+* Request new team member
+* Release team member
+
+_Team Member Mode_
+* View team members on map
+* View change profile details and status
+
+**Echo/Alexa Device**
+
+* Broadcast audio event updates
+* Team member status changes
+* Listen for questions:
+* What is the status of team member X?
+* What is the status of strike team X?
+* Where is team member X?
+
+###  [Full Use Case Document](https://docs.google.com/document/d/1i_YqGl3z3n3PQqfn06cAsWEssvgETKwPnlnQnQSF9Cs/edit?usp=sharing)
