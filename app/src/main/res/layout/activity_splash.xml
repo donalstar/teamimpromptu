@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.rubicon.indepth.ui.splash.SplashActivity">
+    tools:context="net.teamimpromptu.fieldmanager.ui.splash.SplashActivity">
 
 
 
@@ -14,7 +14,7 @@
         android:layout_margin="20dp"
         android:layout_marginTop="10dp"
         android:gravity="left"
-        android:text="IN DEPTH : FIELD MANAGER"/>
+        android:text="FIELD MANAGER"/>
 
 
     <ImageView
