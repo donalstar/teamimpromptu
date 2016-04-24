@@ -16,6 +16,8 @@ public class UserPreferenceHelper {
     public static final Long NO_CURRENT_USER = -1L;
     public static final String DISPLAY_TRANSITION_AUDIO_CUE = "displayTransitionCue";
 
+    public static final String IDENTITY_POOL_ID = "identityPoolId";
+
     /**
      * @param context
      */
@@ -153,5 +155,23 @@ public class UserPreferenceHelper {
      */
     public void setDisplayTransitionAudioCue(Context context, boolean flag) {
         setBoolean(context, DISPLAY_TRANSITION_AUDIO_CUE, flag);
+    }
+
+    /**
+     *
+     * @param context
+     * @param value
+     */
+    public void setIdentityPoolId(Context context, String value) {
+        setString(context, IDENTITY_POOL_ID, value);
+    }
+
+    /**
+     * @param context
+     * @return
+     */
+    public String getIdentityPoolId(Context context) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        return sp.getString(IDENTITY_POOL_ID, null);
     }
 }

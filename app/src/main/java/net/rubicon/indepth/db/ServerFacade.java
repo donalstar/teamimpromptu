@@ -9,6 +9,8 @@ import com.amazonaws.mobileconnectors.cognito.Dataset;
 import com.amazonaws.mobileconnectors.cognito.DefaultSyncCallback;
 import com.amazonaws.regions.Regions;
 
+import net.rubicon.indepth.ui.utility.UserPreferenceHelper;
+
 import java.util.List;
 
 /**
@@ -18,7 +20,6 @@ public class ServerFacade {
     public static final String LOG_TAG = ServerFacade.class.getName();
 
     private static final String DATA_SET = "myDataset";
-
 
     private static ServerFacade INSTANCE;
 
@@ -33,7 +34,21 @@ public class ServerFacade {
     }
 
     private ServerFacade(Context context) {
+        UserPreferenceHelper uph = new UserPreferenceHelper();
 
+        // Initialize the Amazon Cognito credentials provider
+        CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
+                context,
+                uph.getIdentityPoolId(context),
+                Regions.US_EAST_1 // Region
+        );
+
+        Log.i(LOG_TAG, "Got cred. provider -- " + credentialsProvider);
+
+        _syncClient = new CognitoSyncManager(
+                context,
+                Regions.US_EAST_1, // Region
+                credentialsProvider);
 
     }
 

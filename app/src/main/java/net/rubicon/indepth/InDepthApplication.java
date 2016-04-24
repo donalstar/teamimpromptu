@@ -15,9 +15,11 @@ import com.amazonaws.mobileconnectors.cognito.DefaultSyncCallback;
 import com.amazonaws.regions.Regions;
 
 import net.rubicon.indepth.db.ServerFacade;
+import net.rubicon.indepth.ui.utility.ApplicationProperties;
 import net.rubicon.indepth.ui.utility.PermissionsHandler;
 import net.rubicon.indepth.ui.utility.UserPreferenceHelper;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -40,14 +42,24 @@ public class InDepthApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        ApplicationProperties properties = null;
+
+        try {
+            properties = ApplicationProperties.getInstance(getBaseContext());
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "Failed to locate application properties: " + e);
+        }
+
         _uph = new UserPreferenceHelper();
         if (_uph.isEmptyPreferences(this)) {
             Log.i(LOG_TAG, "Preferences are empty");
             _uph.writeDefaults(this);
         }
 
+        _uph.setIdentityPoolId(this, properties.getProperty(ApplicationProperties.IDENTITY_POOL_ID));
+
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            // register for Zandor client app startup broadcasts
+            // register for client app startup broadcasts
             listenForPermissionsGrantedBroadcast();
         } else {
             // no need to wait... (older API level)
@@ -58,8 +70,8 @@ public class InDepthApplication extends Application {
         ServerFacade serverFacade = ServerFacade.getInstance(getApplicationContext());
 
         serverFacade.set("STATUS", "ACTIVE");
-//
 
+//
 
 //        AmazonDynamoDBClient ddbClient = new AmazonDynamoDBClient(credentialsProvider);
 //
@@ -67,8 +79,49 @@ public class InDepthApplication extends Application {
 //
 //
 //
+////        QueryRequest
+////        ddbClient.query()
+//
+//
+//        // Create Query request
+//        QueryRequest request = new QueryRequest("InDepthStatus");
 
+//        new DbGet().execute( credentialsProvider );
 
+//        {
+//            TableName = "SampleTable",
+//                    ExclusiveStartKey = startKey,
+//                    KeyConditions = keyConditions
+//        };
+
+        // Issue request
+
+//        QueryResult result = ddbClient.query(request);
+//
+//        Log.i(LOG_TAG, "db result -- " + result);
+
+//
+//
+//        CognitoSyncManager syncClient = new CognitoSyncManager(
+//                getApplicationContext(),
+//                Regions.US_EAST_1, // Region
+//                credentialsProvider);
+//
+//// Create a record in a dataset and synchronize with the server
+//        Dataset dataset = syncClient.openOrCreateDataset("myDataset");
+//        dataset.put("myKey", "myValue");
+//        dataset.synchronize(new DefaultSyncCallback() {
+//            @Override
+//            public void onSuccess(Dataset dataset, List newRecords) {
+//                //Your handler code here
+//                Log.i(LOG_TAG, "Added key & value!!!");
+//
+//
+//                String value = dataset.get("myKey");
+//
+//                Log.i(LOG_TAG, "Got value from dataset! " + value);
+//            }
+//        });
 
         Log.i(LOG_TAG, "Application created");
 

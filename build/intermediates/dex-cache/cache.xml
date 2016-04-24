@@ -2,18 +2,25 @@
 <items version="2" >
 
     <item
-        jar="/Users/donal/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-android-sdk-s3/2.2.14/2718b3fb0de5b42dee45c03fb0e16c0a1cb0537a/aws-android-sdk-s3-2.2.14.jar"
+        jar="/Users/donal/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-android-sdk-cognito/2.2.15/3c7a5d15364d8e89397517b86a81a673e6f1bc58/aws-android-sdk-cognito-2.2.15.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="2718b3fb0de5b42dee45c03fb0e16c0a1cb0537a">
-        <dex dex="/Users/donal/development/DC/in-depth/app/build/intermediates/pre-dexed/debug/aws-android-sdk-s3-2.2.14-2ca347631afbb992e4eb130c15a4b55496a623e4.jar" />
+        sha1="3c7a5d15364d8e89397517b86a81a673e6f1bc58">
+        <dex dex="/Users/donal/development/DC/in-depth/app/build/intermediates/pre-dexed/debug/aws-android-sdk-cognito-2.2.15-6b8fde18ffcdf649424222823863d218e5625b88.jar" />
     </item>
     <item
-        jar="/Users/donal/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-android-sdk-ddb-mapper/2.2.14/d2d3a3e1498264a6dfd26ccc86d1785db14ca3e8/aws-android-sdk-ddb-mapper-2.2.14.jar"
+        jar="/Users/donal/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-android-sdk-ddb/2.2.15/da947e72eafbe7d05f9adb93c389ab336ff9e70e/aws-android-sdk-ddb-2.2.15.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="d2d3a3e1498264a6dfd26ccc86d1785db14ca3e8">
-        <dex dex="/Users/donal/development/DC/in-depth/app/build/intermediates/pre-dexed/debug/aws-android-sdk-ddb-mapper-2.2.14-593c2b3405d99fb48a096b5972a21fda3584e61e.jar" />
+        sha1="da947e72eafbe7d05f9adb93c389ab336ff9e70e">
+        <dex dex="/Users/donal/development/DC/in-depth/app/build/intermediates/pre-dexed/debug/aws-android-sdk-ddb-2.2.15-1d6b6b14253ea3e54aeaefe1a36ade31269b6380.jar" />
+    </item>
+    <item
+        jar="/Users/donal/.gradle/caches/modules-2/files-2.1/com.amazonaws/aws-android-sdk-core/2.2.15/4a285e77ff24333fe144824a1d5557de75cdfac1/aws-android-sdk-core-2.2.15.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4a285e77ff24333fe144824a1d5557de75cdfac1">
+        <dex dex="/Users/donal/development/DC/in-depth/app/build/intermediates/pre-dexed/debug/aws-android-sdk-core-2.2.15-8a5f88700ca0cd2353ce63132929ee401ee55906.jar" />
     </item>
 
 </items>
