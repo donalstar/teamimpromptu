@@ -7,8 +7,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
+import com.amazonaws.services.dynamodbv2.model.QueryRequest;
+import com.amazonaws.services.dynamodbv2.model.QueryResult;
 
 import net.teamimpromptu.fieldmanager.db.ServerFacade;
 import net.teamimpromptu.fieldmanager.ui.utility.ApplicationProperties;
@@ -17,10 +21,7 @@ import net.teamimpromptu.fieldmanager.ui.utility.UserPreferenceHelper;
 
 import java.io.IOException;
 
-
-import com.amazonaws.services.dynamodbv2.*;
 //import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.*;
-import com.amazonaws.services.dynamodbv2.model.*;
 
 /**
  *
@@ -38,9 +39,19 @@ public class FieldManagerApplication extends Application {
 
         try {
             properties = ApplicationProperties.getInstance(getBaseContext());
+
+            initialize(properties);
         } catch (IOException e) {
             Log.e(LOG_TAG, "Failed to locate application properties: " + e);
+
+            Toast.makeText(this, "FATAL: Failed to load application properties!", Toast.LENGTH_LONG).show();
         }
+    }
+
+    /**
+     * @param properties
+     */
+    private void initialize(ApplicationProperties properties) {
 
         _uph = new UserPreferenceHelper();
         if (_uph.isEmptyPreferences(this)) {
@@ -116,9 +127,7 @@ public class FieldManagerApplication extends Application {
 //        });
 
         Log.i(LOG_TAG, "Application created");
-
     }
-
 
     class DbGet extends AsyncTask<CognitoCachingCredentialsProvider, Void, String> {
 
