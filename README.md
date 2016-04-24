@@ -7,23 +7,23 @@ The proposed solution addresses the use case in a few different ways:
 * A connect Amazon Echo device will allow hands-free (audio) updates of team status from the field in the command center.
 
 ###  Use Cases
-*Administrator Web Console*
+***Administrator Web Console***
 
-__General Admin__
-View general status (engagements/teams/members/map)
-Add a new Rubicon user to the system
-View all Rubicon users
-View Rubicon user details
-Edit Rubicon user details
-View all strike teams
-View strike team details
-View active engagements
-Create a new engagement
-Show update (popup/message) when a team member update occurs
+___General Admin___
+* View general status (engagements/teams/members/map)
+* Add a new Rubicon user to the system
+* View all Rubicon users
+* View Rubicon user details
+* Edit Rubicon user details
+* View all strike teams
+* View strike team details
+* View active engagements
+* Create a new engagement
+* Show update (popup/message) when a team member update occurs
 
-__Create a Strike Team__
-Create a strike team & set team details
-Assign a team leader
-Assign team members/Transfer team members
-Assign to an engagement/Release from an engagement
+___Create a Strike Team___
+* Create a strike team & set team details
+* Assign a team leader
+* Assign team members/Transfer team members
+* Assign to an engagement/Release from an engagement
 
