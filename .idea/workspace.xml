@@ -10,78 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cfeb8e6-ea87-47c9-97d2-c187c7a01f02" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/application.properties" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/Constant.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/Constant.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/DataBaseScenario.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/DataBaseScenario.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/InDepthApplication.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/FieldManagerApplication.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/chain/AbstractCmd.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/chain/AbstractCmd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/chain/AbstractCmdCtx.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/chain/AbstractCmdCtx.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/chain/CommandEnum.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/chain/CommandEnum.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/chain/CommandFacade.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/chain/CommandFacade.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/chain/CommandFactory.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/chain/CommandFactory.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/chain/ContextFactory.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/chain/ContextFactory.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/chain/ContextList.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/chain/ContextList.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/chain/DataBaseFacade.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/chain/DataBaseFacade.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/chain/PersonSelectByUsernameCmd.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/chain/PersonSelectByUsernameCmd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/chain/PersonSelectByUsernameCtx.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/chain/PersonSelectByUsernameCtx.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/chain/ResultEnum.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/chain/ResultEnum.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/chain/SelectByRowIdCmd.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/chain/SelectByRowIdCmd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/chain/SelectByRowIdCtx.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/chain/SelectByRowIdCtx.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/chain/UpdateCmd.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/chain/UpdateCmd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/chain/UpdateCtx.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/chain/UpdateCtx.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/db/ContentFacade.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/db/ContentFacade.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/db/DataBaseHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/db/DataBaseHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/db/DataBaseModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/db/DataBaseModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/db/DataBaseProvider.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/db/DataBaseProvider.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/db/DataBaseTable.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/db/DataBaseTable.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/db/PersonModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/db/PersonModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/db/PersonTable.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/db/PersonTable.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/db/ServerFacade.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/db/ServerFacade.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/db/StatusEnum.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/db/StatusEnum.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/db/StrikeTeamModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/db/StrikeTeamModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/db/StrikeTeamTable.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/db/StrikeTeamTable.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/db/TeamModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/db/TeamModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/db/TeamTable.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/db/TeamTable.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/DialogEnum.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/DialogEnum.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/DialogListener.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/DialogListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/FragmentContext.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/FragmentContext.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/FragmentsEnum.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/FragmentsEnum.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/MainActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/MainActivityEnum.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/MainActivityEnum.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/MainActivityListener.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/MainActivityListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/PagerFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/PagerFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/ProfileFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/ProfileFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/StrikeTeamsListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/StrikeTeamsListAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/StrikeTeamsListFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/StrikeTeamsListFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/StrikeTeamsMapFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/StrikeTeamsMapFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/StrikeTeamsPagerAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/StrikeTeamsPagerAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/StrikeTeamsPagerFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/StrikeTeamsPagerFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/TeamFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/TeamFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/TeamListAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/TeamListAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/TeamListFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/TeamListFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/TeamMapFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/TeamMapFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/TeamPagerAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/TeamPagerAdapter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/main/TeamPagerFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/main/TeamPagerFragment.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/splash/SplashActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/splash/SplashActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/utility/ApplicationProperties.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/utility/ApplicationProperties.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/utility/FormUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/utility/FormUtils.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/utility/PermissionsHandler.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/utility/PermissionsHandler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/utility/StatusIndicatorEnum.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/utility/StatusIndicatorEnum.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/utility/ToastHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/utility/ToastHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/net/rubicon/indepth/ui/utility/UserPreferenceHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/teamimpromptu/fieldmanager/ui/utility/UserPreferenceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/gradle_project_sync_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/gradle_project_sync_data.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/outputFileStates.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/androidTest/java/net/rubicon/indepth/ApplicationTest.java" afterPath="" />
     </list>
     <ignored path="in-depth.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -120,19 +49,6 @@
                 <element signature="e#2013#2014#0" expanded="true" />
               </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_splash.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.862069">
-              <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
           </provider>
         </entry>
       </file>
@@ -2095,6 +2011,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="in-depth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="in-depth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="in-depth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="in-depth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="androidTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="AndroidView">
@@ -2458,7 +2414,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32492998" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
