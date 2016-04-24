@@ -14,7 +14,7 @@ public class ApplicationProperties {
 
     private static ApplicationProperties INSTANCE;
 
-    private static final String PROPERTIES_FILE = "application.properties";
+    private static final String PROPERTIES_FILE = "app.properties";
 
     private Properties _properties;
 
