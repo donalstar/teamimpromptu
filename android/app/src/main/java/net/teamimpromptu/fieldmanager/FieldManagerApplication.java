@@ -5,23 +5,20 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
-
-import com.amazonaws.auth.CognitoCachingCredentialsProvider;
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
-import com.amazonaws.services.dynamodbv2.model.QueryRequest;
-import com.amazonaws.services.dynamodbv2.model.QueryResult;
 
 import net.teamimpromptu.fieldmanager.db.ServerFacade;
 import net.teamimpromptu.fieldmanager.ui.utility.ApplicationProperties;
 import net.teamimpromptu.fieldmanager.ui.utility.PermissionsHandler;
 import net.teamimpromptu.fieldmanager.ui.utility.UserPreferenceHelper;
+import net.teamimpromptu.fieldmanager.ui.utility.WebService;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
-//import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.*;
 
 /**
  *
@@ -69,112 +66,42 @@ public class FieldManagerApplication extends Application {
             initializeDatabase();
         }
 
-
         ServerFacade serverFacade = ServerFacade.getInstance(getApplicationContext());
 
         serverFacade.set("STATUS", "ACTIVE");
 
-//
-
-//        AmazonDynamoDBClient ddbClient = new AmazonDynamoDBClient(credentialsProvider);
-//
-//        Log.i(LOG_TAG, "Got db client -- " + ddbClient);
-//
-//
-//
-////        QueryRequest
-////        ddbClient.query()
-//
-//
-//        // Create Query request
-//        QueryRequest request = new QueryRequest("InDepthStatus");
-
-//        new DbGet().execute( credentialsProvider );
-
-//        {
-//            TableName = "SampleTable",
-//                    ExclusiveStartKey = startKey,
-//                    KeyConditions = keyConditions
-//        };
-
-        // Issue request
-
-//        QueryResult result = ddbClient.query(request);
-//
-//        Log.i(LOG_TAG, "db result -- " + result);
-
-//
-//
-//        CognitoSyncManager syncClient = new CognitoSyncManager(
-//                getApplicationContext(),
-//                Regions.US_EAST_1, // Region
-//                credentialsProvider);
-//
-//// Create a record in a dataset and synchronize with the server
-//        Dataset dataset = syncClient.openOrCreateDataset("myDataset");
-//        dataset.put("myKey", "myValue");
-//        dataset.synchronize(new DefaultSyncCallback() {
-//            @Override
-//            public void onSuccess(Dataset dataset, List newRecords) {
-//                //Your handler code here
-//                Log.i(LOG_TAG, "Added key & value!!!");
-//
-//
-//                String value = dataset.get("myKey");
-//
-//                Log.i(LOG_TAG, "Got value from dataset! " + value);
-//            }
-//        });
+        invokeRestService();
 
         Log.i(LOG_TAG, "Application created");
     }
 
-    class DbGet extends AsyncTask<CognitoCachingCredentialsProvider, Void, String> {
+    private void invokeRestService() {
+        Log.i(LOG_TAG, "invokeRestService");
 
-        private Exception exception;
+        String apiId = "9ph1zj3fxg";
+        String resourcePath = "DynamoDBManager4";
 
-        QueryResult result;
+        String params = null;
 
-        protected String doInBackground(CognitoCachingCredentialsProvider... credentialsProviders) {
-            try {
+        try {
+            JSONObject parent = new JSONObject();
+            JSONObject payload = new JSONObject();
 
-                AmazonDynamoDBClient ddbClient = new AmazonDynamoDBClient(credentialsProviders[0]);
+            payload.put("username", "adm");
+            payload.put("password", "pwd");
+            parent.put("operation", "echo");
+            parent.put("payload", payload);
 
-                Log.i(LOG_TAG, "Got db client -- " + ddbClient);
-
-//        QueryRequest
-//        ddbClient.query()
-
-
-                // Create Query request
-                QueryRequest request = new QueryRequest("InDepthStatus");
-
-                request.setKeyConditionExpression("stat = :STATUS");
-
-//                'KeyConditionExpression' => 'feed_guid = :v_guid1 or feed_guid = :v_guid2',
-
-
-//                KeyConditionExpression, :artist
-
-                result = ddbClient.query(request);
-
-                Log.i(LOG_TAG, "result -- " + result);
-
-                return "ok";
-            } catch (Exception e) {
-                Log.i(LOG_TAG, "ex " + e);
-                this.exception = e;
-                return null;
-            }
+            params = parent.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
-        protected void onPostExecute(CognitoCachingCredentialsProvider provider) {
-            // TODO: check this.exception
-            // TODO: do something with the feed
-
-            Log.i(LOG_TAG, "DB QUERY DONE " + result);
-        }
+        new WebService(
+                "https://" + apiId + ".execute-api.us-east-1.amazonaws.com/prod/" + resourcePath,
+                params).execute();
     }
+
 
     /**
      *
@@ -201,7 +128,6 @@ public class FieldManagerApplication extends Application {
 
     }
 
-
     private void doDatabaseInit() {
         Log.i(LOG_TAG, "doDatabaseInit");
 
@@ -212,4 +138,9 @@ public class FieldManagerApplication extends Application {
         scenario.loadPersons(this);
     }
 
+
 }
+
+
+
+
