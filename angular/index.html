@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html ng-app="appname">
+
+<head>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+    <script src="angular-resource.js"></script>
+
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+<div ng-controller="theController">
+
+    <h1>Team Impromptu : Quick Test</h1>
+
+    <h3>Show Team Members</h3>
+
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Team</th>
+            <th>Is Active</th>
+            <th>Location</th>
+        </tr>
+        <tr ng-repeat="user in members">
+            <td>{{ user.Name}}</td>
+            <td>{{ user.Team }}</td>
+            <td>{{ user.Active }}</td>
+            <td>{{ user.Location }}</td>
+        </tr>
+    </table>
+
+
+    <table>
+        <form name="form" ng-submit="refresh()">
+            <tr>
+                <td>
+                    <button type="submit" class="btn btn-primary">Refresh</button>
+                </td>
+
+            </tr>
+
+        </form>
+    </table>
+
+
+    <h3>Add Team Member</h3>
+
+
+    <form name="form" ng-submit="addItem()">
+
+        <table>
+            <tr>
+                <td>
+                    Name:
+                </td>
+                <td>
+                    <input type="text" name="name" class="form-control input-sm"
+                           ng-model="member.Name" placeholder="Name" tabindex="1" required/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Team:
+                </td>
+                <td>
+                    <input type="text" name="team" class="form-control input-sm"
+                           ng-model="member.Team" placeholder="Team" tabindex="1" required/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Is Active:
+                </td>
+                <td>
+                    <input type="text" name="active" class="form-control input-sm"
+                           ng-model="member.Active" placeholder="Active" tabindex="1" required/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Location:
+                </td>
+                <td>
+                    <input type="text" name="location" class="form-control input-sm"
+                           ng-model="member.Location" placeholder="Location" tabindex="1" required/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+
+</html>
