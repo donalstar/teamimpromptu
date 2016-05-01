@@ -34,6 +34,17 @@ application.controller('theController', ['$scope', 'dataFactory',
         getMembers();
     };
 
+    $scope.editItem = function(member) {
+
+        editMember(member);
+
+        member.Visible = !member.Visible;
+    };
+
+    $scope.changeItem = function() {
+        alert("EDIT not implemented yet");
+    };
+
     $scope.deleteItem = function(member) {
         deleteMember(member);
 
@@ -123,4 +134,7 @@ application.controller('theController', ['$scope', 'dataFactory',
             });
     };
 
+        function editMember(member) {
+        console.log("Edit member " + member.Name);
+        };
 }]);
