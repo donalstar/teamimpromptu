@@ -30,6 +30,8 @@ application.controller('theController', ['$scope', 'dataFactory',
 
     $scope.addItem = function() {
         insertData($scope.member);
+
+        getMembers();
     };
 
     $scope.refresh = function() {
