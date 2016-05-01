@@ -34,6 +34,12 @@ application.controller('theController', ['$scope', 'dataFactory',
         getMembers();
     };
 
+    $scope.deleteItem = function(member) {
+        deleteMember(member);
+
+        getMembers();
+    };
+
     $scope.refresh = function() {
         getMembers();
     };
@@ -85,6 +91,35 @@ application.controller('theController', ['$scope', 'dataFactory',
                 $scope.status = response.data;
             }, function(error) {
                 $scope.status = 'Unable to insert customer: ' + error.message;
+            });
+    };
+
+    // Delete from AWS Dynamo DB
+    function deleteMember(member) {
+
+        var keys = {
+            Name: member.Name,
+            Team: member.Team
+        };
+
+
+        var payload = {
+            Key: keys
+        };
+
+        var data = {
+            operation: 'delete',
+            tableName: 'Member',
+            payload: payload
+        };
+
+        dataFactory.execute(data)
+            .then(function (response) {
+               console.log("Deleted member " + response.data);
+
+                $scope.status = response.data;
+            }, function(error) {
+                $scope.status = 'Unable to delete member: ' + error.message;
             });
     };
 
