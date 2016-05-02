@@ -12,9 +12,6 @@ application.config(['$httpProvider',function ($httpProvider) {
 }]) ;
 
 application.factory('dataFactory', ['$http', function($http) {
-
-    var apiUrl = 'https://s2z34x36ai.execute-api.us-east-1.amazonaws.com/prod/ImpromptuDBConnect';
-
     var dataFactory = {};
 
     dataFactory.execute = function (cust) {
@@ -35,14 +32,13 @@ application.controller('theController', ['$scope', 'dataFactory',
     };
 
     $scope.editItem = function(member) {
-
-        editMember(member);
-
         member.Visible = !member.Visible;
     };
 
-    $scope.changeItem = function() {
-        alert("EDIT not implemented yet");
+    $scope.changeItem = function(member) {
+        editMember(member);
+
+        member.Visible = !member.Visible;
     };
 
     $scope.deleteItem = function(member) {
@@ -52,6 +48,8 @@ application.controller('theController', ['$scope', 'dataFactory',
     };
 
     $scope.refresh = function() {
+
+
         getMembers();
     };
 
@@ -66,7 +64,7 @@ application.controller('theController', ['$scope', 'dataFactory',
 
         var data = {
             operation: 'list',
-            tableName: 'Member',
+            tableName: member_table,
             payload: payload
         };
 
@@ -85,13 +83,15 @@ application.controller('theController', ['$scope', 'dataFactory',
     // Insert in AWS Dynamo DB
     function insertData(member) {
 
+        member.ID = ($scope.members.length + 1).toString();
+
         var payload = {
             Item: member
         };
 
         var data = {
             operation: 'create',
-            tableName: 'Member',
+            tableName: member_table,
             payload: payload
         };
 
@@ -109,8 +109,8 @@ application.controller('theController', ['$scope', 'dataFactory',
     function deleteMember(member) {
 
         var keys = {
-            Name: member.Name,
-            Team: member.Team
+            ID: member.ID,
+            Name: member.Name
         };
 
 
@@ -120,7 +120,7 @@ application.controller('theController', ['$scope', 'dataFactory',
 
         var data = {
             operation: 'delete',
-            tableName: 'Member',
+            tableName: member_table,
             payload: payload
         };
 
@@ -134,7 +134,41 @@ application.controller('theController', ['$scope', 'dataFactory',
             });
     };
 
-        function editMember(member) {
-        console.log("Edit member " + member.Name);
+    // Edit from AWS Dynamo DB item
+    function editMember(member) {
+
+
+
+        var keys = {
+            ID: member.ID,
+            Name: member.Name
         };
+
+        var values = {
+            ':active': member.Active
+        };
+
+        var payload = {
+            Key: keys,
+            UpdateExpression: "set Active = :active",
+            ExpressionAttributeValues: values
+        };
+
+
+        var data = {
+            operation: 'update',
+            tableName: member_table,
+            payload: payload
+        };
+
+        dataFactory.execute(data)
+            .then(function (response) {
+               console.log("Updated Customer " + response.data);
+
+                $scope.status = response.data;
+            }, function(error) {
+                $scope.status = 'Unable to update item: ' + error.message;
+            });
+    };
 }]);
+

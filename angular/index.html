@@ -8,6 +8,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
 
     <script src="angular-resource.js"></script>
+    <script src="config.js"></script>
     <script src="script.js"></script>
 </head>
 
@@ -92,7 +93,7 @@
                                             <div id="frmLogin">
                                                 <div class="panel panel-default">
                                                     <div class="panel-body">
-                                                        <form name="form" ng-submit="changeItem()">
+                                                        <form name="form" ng-submit="changeItem(member)">
 
                                                             <div class="row" style="margin-bottom:10px;">
                                                                 <div class="form-group">
@@ -143,7 +144,7 @@
 
                                                                         <input type="text" name="active"
                                                                                class="form-control input-sm"
-                                                                               ng-model="member.Location"
+                                                                               ng-model="member.Base"
                                                                                placeholder="Location" tabindex="1"
                                                                                required/>
                                                                     </div>
@@ -167,7 +168,7 @@
                                 </td>
                                 <td>{{member.Team}}</td>
                                 <td>{{member.Active}}</td>
-                                <td>{{member.Location}}</td>
+                                <td>{{member.Base}}</td>
 
                                 <td>
                                     <button type="button" id="view" ng-click="editItem(member)"
@@ -241,7 +242,7 @@
                                         <div class="col-sm-8">
 
                                             <input type="text" name="active" class="form-control input-sm"
-                                                   ng-model="member.Location" placeholder="Location" tabindex="1"
+                                                   ng-model="member.Base" placeholder="Location" tabindex="1"
                                                    required/>
                                         </div>
                                     </div>
