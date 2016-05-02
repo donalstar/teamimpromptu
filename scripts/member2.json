@@ -1,0 +1,9 @@
+{
+"ID:": {"S": "2"},
+"Name": {"S": "Frank"},
+"Team": {"S": "Alpha"},
+"Base": {"S": "SEA"},
+"Active": {"S": "True"}
+
+}
+
