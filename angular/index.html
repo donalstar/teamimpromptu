@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0">
 
     <link href="Content/style.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="Content/snap.css"/>
@@ -11,10 +12,13 @@
     <link href="bootstrap.min.css" rel="stylesheet">
 
     <script src="snap.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcH9YJOZt8NR0kGIJgICXB6PvYG5LiVQQ"></script>
+
     <script data-require="angular.js@1.2.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"
             data-semver="1.2.4"></script>
-    <script src="angular-snap.js" type="text/javascript" charset="utf-8"></script>
 
+    <script src="angular-snap.js" type="text/javascript" charset="utf-8"></script>
 
     <script src="config.js"></script>
     <script src="app.js"></script>
@@ -24,6 +28,7 @@
 <body>
 
 <div class="mainContainer" ng-controller="controller">
+
 
     <div class="container">
 
@@ -141,7 +146,7 @@
                 </div>
 
                 <div class="row centered-form" ng-show="doAdd">
-                    <div id="frmLogin">
+                    <div>
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">Add Team Member</h4>
@@ -252,156 +257,9 @@
             </div>
         </nav>
 
-
-        <div class="mainContainer" style="width: 80%;">
-
-            <div>
-
-                <!-- inside container -->
-                <div class="container">
-
-                    <div class="row">
-                        <h4 class="titleText">Show Team Members</h4>
-                    </div>
-
-                </div>
-
-                <div class="container full_width">
-                    <div class="row centered-form" style="padding-bottom:80px">
-                        <div style="clear:both;"></div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><strong>Team Members</strong></h3>
-                            </div>
-                            <div class="panel-body">
-
-                                <table class="table table-hover" id="ResultsTable2">
-                                    <thead>
-                                    <tr>
-                                        <th width="\&quot;10%\&quot;">Name</th>
-                                        <th width="\&quot;10%\&quot;">Team</th>
-                                        <th width="\&quot;10%\&quot;">Is Active</th>
-                                        <th width="\&quot;15%\&quot;">Location</th>
-                                        <th width="\&quot;10%\&quot;">&nbsp;</th>
-                                        <th width="\&quot;10%\&quot;">&nbsp;</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
+        <div id="map"></div>
 
 
-                                    <tr ng-repeat="member in members">
-
-                                        <td>
-                                            <div class="container">
-                                                {{member.Name}}
-                                            </div>
-                                            <div class="container"
-                                                 style="width:350px;  float: left; padding-top:10px"
-                                                 ng-show="member.Visible">
-                                                <div class="row centered-form">
-                                                    <div id="frmLogin">
-                                                        <div class="panel panel-default">
-                                                            <div class="panel-body">
-                                                                <form name="form" ng-submit="changeItem(member)">
-
-                                                                    <div class="row" style="margin-bottom:10px;">
-                                                                        <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">Name:</label>
-
-                                                                            <div class="col-sm-8">
-                                                                                <input type="text" name="name"
-                                                                                       class="form-control input-sm"
-                                                                                       ng-model="member.Name"
-                                                                                       placeholder="Name"
-                                                                                       tabindex="1" required/>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row" style="margin-bottom:10px;">
-                                                                        <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">Team:</label>
-
-                                                                            <div class="col-sm-8">
-                                                                                <input type="text" name="team"
-                                                                                       class="form-control input-sm"
-                                                                                       ng-model="member.Team"
-                                                                                       placeholder="Team"
-                                                                                       tabindex="1" required/>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row" style="margin-bottom:10px;">
-                                                                        <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">Is
-                                                                                Active:</label>
-
-                                                                            <div class="col-sm-8">
-                                                                                <input type="text" name="active"
-                                                                                       class="form-control input-sm"
-                                                                                       ng-model="member.Active"
-                                                                                       placeholder="Active"
-                                                                                       tabindex="1"
-                                                                                       required/>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row" style="margin-bottom:10px;">
-                                                                        <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">Location:</label>
-
-                                                                            <div class="col-sm-8">
-
-                                                                                <input type="text" name="active"
-                                                                                       class="form-control input-sm"
-                                                                                       ng-model="member.Base"
-                                                                                       placeholder="Location"
-                                                                                       tabindex="1"
-                                                                                       required/>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-
-                                                                    <div class="well"
-                                                                         style="margin: 0 auto 5px; text-align:right">
-                                                                        <button type="submit"
-                                                                                class="btn btn-primary"
-                                                                                style="width:150px">Change
-                                                                        </button>
-                                                                    </div>
-
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>{{member.Team}}</td>
-                                        <td>{{member.Active}}</td>
-                                        <td>{{member.Base}}</td>
-
-
-                                        <td>
-                                            <button type="button" id="delete" ng-click="deleteItem(member)"
-                                                    class="btn btn-primary" style="width:80px; height:30px;">Delete
-                                            </button>
-                                        </td>
-
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
     </div>
 
 </body>

@@ -22,6 +22,98 @@ application.factory('dataFactory', ['$http', function($http) {
 application.controller('controller', ['$scope', 'dataFactory', 'SNAP_VERSION', 'snapRemote',
     function($scope, dataFactory, SNAP_VERSION, snapRemote ) {
 
+
+    //Data
+    var locations = [
+              {
+                  city : 'Fish Wharf',
+                  desc : 'F W',
+                  lat : 37.803062,
+                  long : -122.411354
+              },
+              {
+                  city : 'Broadway & Battery',
+                  desc : 'BB',
+                  lat : 37.798433,
+                  long : -122.400947
+              }
+
+          ];
+
+    var locs = [
+              {
+                  lat : 37.803062,
+                  long : -122.411354
+              },
+              {
+                  lat : 37.798433,
+                  long : -122.400947
+              },
+
+              {
+                  lat : 37.798433,
+                  long : -122.400947
+              },
+
+                            {
+                  lat : 37.7960595,
+                  long : -122.4103252
+              }
+
+
+
+          ];
+
+    var mapOptions = {
+                  zoom: 15,
+                  center: new google.maps.LatLng(37.803062, -122.411354),
+                  mapTypeId: google.maps.MapTypeId.ROADMAP
+              }
+
+    $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    function getRandom(min, max) {
+        return min + Math.floor(Math.random() * (max - min + 1));
+    }
+
+//for(var x = 0; x < 5; x++) {
+//    alert(getRandom(7, 10));
+//}
+
+        $scope.markers = [];
+
+              var infoWindow = new google.maps.InfoWindow();
+
+              var createMarker = function (info){
+
+                  var marker = new google.maps.Marker({
+                      map: $scope.map,
+                      position: new google.maps.LatLng(info.lat, info.long),
+                      title: info.city
+                  });
+                  marker.content = '<div class="infoWindowContent">' + info.desc + '</div>';
+
+                  google.maps.event.addListener(marker, 'click', function(){
+                      infoWindow.setContent('<h3>' + marker.title + '</h3>' + marker.content);
+                      infoWindow.open($scope.map, marker);
+                  });
+
+                  $scope.markers.push(marker);
+
+              }
+
+              for (i = 0; i < locations.length; i++){
+                  createMarker(locations[i]);
+              }
+
+              $scope.openInfoWindow = function(e, selectedMarker){
+                  e.preventDefault();
+                  google.maps.event.trigger(selectedMarker, 'click');
+              }
+
+
+
+
     $scope.snapVersion = SNAP_VERSION.full;
 
     $scope.doAdd = false;
@@ -98,6 +190,11 @@ application.controller('controller', ['$scope', 'dataFactory', 'SNAP_VERSION', '
     function insertData(member) {
 
         member.ID = ($scope.members.length + 1).toString();
+
+        index = getRandom(0, 3);
+
+        member.Latitude = String(locs[index].lat);
+        member.Longitude = String(locs[index].long);
 
         var payload = {
             Item: member
