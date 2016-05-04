@@ -23,23 +23,6 @@ application.controller('controller', ['$scope', 'dataFactory', 'SNAP_VERSION', '
     function($scope, dataFactory, SNAP_VERSION, snapRemote ) {
 
 
-    //Data
-    var locations = [
-              {
-                  city : 'Fish Wharf',
-                  desc : 'F W',
-                  lat : 37.803062,
-                  long : -122.411354
-              },
-              {
-                  city : 'Broadway & Battery',
-                  desc : 'BB',
-                  lat : 37.798433,
-                  long : -122.400947
-              }
-
-          ];
-
     var locs = [
               {
                   lat : 37.803062,
@@ -76,43 +59,45 @@ application.controller('controller', ['$scope', 'dataFactory', 'SNAP_VERSION', '
         return min + Math.floor(Math.random() * (max - min + 1));
     }
 
-//for(var x = 0; x < 5; x++) {
-//    alert(getRandom(7, 10));
-//}
+    $scope.markers = [];
 
-        $scope.markers = [];
+    var infoWindow = new google.maps.InfoWindow();
 
-              var infoWindow = new google.maps.InfoWindow();
+    var addMarker = function (member) {
 
-              var createMarker = function (info){
+        var marker = new google.maps.Marker({
+            map: $scope.map,
+            position: new google.maps.LatLng(member.Latitude, member.Longitude),
+            title: member.Name
+        });
+        marker.content = '<div class="infoWindowContent">' + member.Name + '</div>';
 
-                  var marker = new google.maps.Marker({
-                      map: $scope.map,
-                      position: new google.maps.LatLng(info.lat, info.long),
-                      title: info.city
-                  });
-                  marker.content = '<div class="infoWindowContent">' + info.desc + '</div>';
+        google.maps.event.addListener(marker, 'click', function(){
+            infoWindow.setContent('<h3>' + marker.title + '</h3>' + marker.content);
+            infoWindow.open($scope.map, marker);
+        });
 
-                  google.maps.event.addListener(marker, 'click', function(){
-                      infoWindow.setContent('<h3>' + marker.title + '</h3>' + marker.content);
-                      infoWindow.open($scope.map, marker);
-                  });
+        $scope.markers.push(marker);
 
-                  $scope.markers.push(marker);
-
-              }
-
-              for (i = 0; i < locations.length; i++){
-                  createMarker(locations[i]);
-              }
-
-              $scope.openInfoWindow = function(e, selectedMarker){
-                  e.preventDefault();
-                  google.maps.event.trigger(selectedMarker, 'click');
-              }
+    }
 
 
+    $scope.openInfoWindow = function(e, selectedMarker){
+        e.preventDefault();
+        google.maps.event.trigger(selectedMarker, 'click');
+    }
 
+    function setMapOnAll(map) {
+      for (var i = 0; i < $scope.markers.length; i++) {
+        $scope.markers[i].setMap(map);
+      }
+    }
+
+    $scope.clearMap = function() {
+        console.log("clear map");
+
+        setMapOnAll(null);
+    }
 
     $scope.snapVersion = SNAP_VERSION.full;
 
@@ -178,12 +163,26 @@ application.controller('controller', ['$scope', 'dataFactory', 'SNAP_VERSION', '
 
         dataFactory.execute(data)
             .then(function (response) {
-               console.log("Got members list " + response.data);
 
                 $scope.members = response.data.Items;
+
+                refreshMapMarkers();
             }, function(error) {
                 $scope.status = 'Unable to insert customer: ' + error.message;
             });
+    }
+
+    function refreshMapMarkers() {
+        $scope.clearMap();
+
+        var len = $scope.members.length;
+                for (var i = 0; i < len; i++) {
+                    console.log("LAT " + $scope.members[i].Latitude);
+
+                    if ($scope.members[i].Latitude != null) {
+                         addMarker($scope.members[i]);
+                    }
+                }
     }
 
     // Insert in AWS Dynamo DB
