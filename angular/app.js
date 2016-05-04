@@ -19,7 +19,7 @@ application.factory('dataFactory', ['$http', function($http) {
     return dataFactory;
 }]);
 
-application.controller('theController', ['$scope', 'dataFactory', 'SNAP_VERSION', 'snapRemote',
+application.controller('controller', ['$scope', 'dataFactory', 'SNAP_VERSION', 'snapRemote',
     function($scope, dataFactory, SNAP_VERSION, snapRemote ) {
 
     $scope.snapVersion = SNAP_VERSION.full;
