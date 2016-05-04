@@ -24,39 +24,52 @@ application.controller('controller', ['$scope', 'dataFactory', 'SNAP_VERSION', '
 
     $scope.snapVersion = SNAP_VERSION.full;
 
+    $scope.doAdd = false;
+    $scope.doShow = true;
+
     snapRemote.getSnapper().then(function(snapper) {
         snapper.open('left');
     });
 
     $scope.addItem = function() {
         insertData($scope.member);
-
-        getMembers();
     };
 
-    $scope.editItem = function(member) {
-        member.Visible = !member.Visible;
-    };
 
     $scope.changeItem = function(member) {
         editMember(member);
-
-        member.Visible = !member.Visible;
     };
 
     $scope.deleteItem = function(member) {
         deleteMember(member);
-
-        getMembers();
     };
 
     $scope.refresh = function() {
-
-
         getMembers();
     };
 
     getMembers();
+
+    $scope.show = function(member) {
+        $scope.selectedMember = member;
+
+        console.log("show " + member.Name);
+        $scope.doShow = true;
+        $scope.doAdd = false;
+
+        snapRemote.getSnapper().then(function(snapper) {
+            snapper.open('right');
+        });
+    }
+
+    $scope.add = function() {
+        $scope.doAdd = true;
+        $scope.doShow = false;
+
+        snapRemote.getSnapper().then(function(snapper) {
+            snapper.open('right');
+        });
+    }
 
     // Get from AWS Dynamo DB
     function getMembers() {
@@ -79,8 +92,6 @@ application.controller('controller', ['$scope', 'dataFactory', 'SNAP_VERSION', '
             }, function(error) {
                 $scope.status = 'Unable to insert customer: ' + error.message;
             });
-
-
     }
 
     // Insert in AWS Dynamo DB
@@ -103,6 +114,12 @@ application.controller('controller', ['$scope', 'dataFactory', 'SNAP_VERSION', '
                console.log("Inserted Customer " + response.data);
 
                 $scope.status = response.data;
+
+                getMembers();
+
+                snapRemote.getSnapper().then(function(snapper) {
+                    snapper.open('left');
+                });
             }, function(error) {
                 $scope.status = 'Unable to insert customer: ' + error.message;
             });
@@ -132,6 +149,12 @@ application.controller('controller', ['$scope', 'dataFactory', 'SNAP_VERSION', '
                console.log("Deleted member " + response.data);
 
                 $scope.status = response.data;
+
+                getMembers();
+
+                snapRemote.getSnapper().then(function(snapper) {
+                    snapper.open('left');
+                });
             }, function(error) {
                 $scope.status = 'Unable to delete member: ' + error.message;
             });
@@ -169,6 +192,12 @@ application.controller('controller', ['$scope', 'dataFactory', 'SNAP_VERSION', '
                console.log("Updated Customer " + response.data);
 
                 $scope.status = response.data;
+
+                getMembers();
+
+                snapRemote.getSnapper().then(function(snapper) {
+                    snapper.open('left');
+                });
             }, function(error) {
                 $scope.status = 'Unable to update item: ' + error.message;
             });

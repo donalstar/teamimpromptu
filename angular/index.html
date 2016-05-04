@@ -38,20 +38,109 @@
 
                 <div>
                     <h4>Members</h4>
+
                     <ul ng-repeat="member in members">
-                        <li><a href=""> {{member.Name}}</a></li>
+                        <li><a href="" ng-click="show(member)">{{member.Name}}</a></li>
                     </ul>
 
-                    <button class="demo-social btn btn-primary" style="margin:10px;width:150px" snap-toggle="right">
-                        Add
-                    </button>
+                    <input type="submit" class="btn btn-primary"
+                           ng-click="add()"
+                           style="padding-left:30px;padding-right:30px;margin-top:-2px;margin-left:9px"
+                           value="Add"/>
+
 
                 </div>
             </div>
 
             <div snap-drawer="right">
 
-                <div class="row centered-form">
+                <div class="row centered-form" ng-show="doShow">
+                    <div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">{{selectedMember.Name}}
+
+                                    <button class="btn btn-primary"
+                                            style="width:65px;background-color:#cf000f;border-color:#d91e18"
+                                            ng-click="deleteItem(selectedMember)">
+                                        Delete
+                                    </button>
+                                </h4>
+                            </div>
+                            <div class="panel-body">
+                                <form name="form" ng-submit="changeItem(selectedMember)">
+                                    <div class="alert alert-success" style="display: none;"></div>
+
+                                    <div class="row" style="margin-bottom:10px;">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">Name:</label>
+
+                                            <div class="col-sm-8">
+                                                <input type="text" name="name" class="form-control input-sm"
+                                                       ng-model="selectedMember.Name" placeholder="Name" tabindex="1"
+                                                       required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="margin-bottom:10px;">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">Team:</label>
+
+                                            <div class="col-sm-8">
+                                                <input type="text" name="team" class="form-control input-sm"
+                                                       ng-model="selectedMember.Team" placeholder="Team" tabindex="1"
+                                                       required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="margin-bottom:10px;">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">Is Active:</label>
+
+                                            <div class="col-sm-8">
+                                                <input type="text" name="active" class="form-control input-sm"
+                                                       ng-model="selectedMember.Active" placeholder="Active"
+                                                       tabindex="1" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="margin-bottom:10px;">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">Location:</label>
+
+                                            <div class="col-sm-8">
+
+                                                <input type="text" name="active" class="form-control input-sm"
+                                                       ng-model="selectedMember.Base" placeholder="Location"
+                                                       tabindex="1"
+                                                       required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="well" style="margin: 0 auto 5px; text-align:right">
+                                        <button type="submit" class="btn btn-primary" style="width:100px">Save
+                                        </button>
+
+                                        <button type="submit" class="btn btn-primary" style="width:100px"
+                                                snap-toggle="left">Cancel
+                                        </button>
+
+                                    </div>
+
+
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row centered-form" ng-show="doAdd">
                     <div id="frmLogin">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -136,10 +225,6 @@
     </div>
 
     <div snap-content data-snap-ignore="true" style="width: 100%;">
-
-        <button snap-toggle>Toggle Left</button>
-        <button snap-toggle="right">Toggle Right</button>
-
 
         <!-- Static navbar -->
         <nav class="navbar navbar-default navbar-static-top" style="opacity: 0.6;width: 80%;">
@@ -299,11 +384,6 @@
                                         <td>{{member.Active}}</td>
                                         <td>{{member.Base}}</td>
 
-                                        <td>
-                                            <button type="button" id="view" ng-click="editItem(member)"
-                                                    class="btn btn-primary" style="width:80px; height:30px;">Edit
-                                            </button>
-                                        </td>
 
                                         <td>
                                             <button type="button" id="delete" ng-click="deleteItem(member)"
