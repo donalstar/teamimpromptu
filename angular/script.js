@@ -1,7 +1,4 @@
-
-var application = angular.module('appname', [
-
-]);
+var application = angular.module('appname', ['snap']);
 
 
 application.config(['$httpProvider',function ($httpProvider) {
@@ -22,8 +19,14 @@ application.factory('dataFactory', ['$http', function($http) {
     return dataFactory;
 }]);
 
-application.controller('theController', ['$scope', 'dataFactory',
-  function($scope, dataFactory) {
+application.controller('theController', ['$scope', 'dataFactory', 'SNAP_VERSION', 'snapRemote',
+    function($scope, dataFactory, SNAP_VERSION, snapRemote ) {
+
+    $scope.snapVersion = SNAP_VERSION.full;
+
+    snapRemote.getSnapper().then(function(snapper) {
+        snapper.open('left');
+    });
 
     $scope.addItem = function() {
         insertData($scope.member);
