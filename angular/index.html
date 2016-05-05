@@ -42,6 +42,16 @@
                 </div>
 
                 <div>
+                    <h4>Teams</h4>
+
+                    <input type="submit" class="btn btn-primary"
+                           style="padding-left:30px;padding-right:30px;margin-top:-2px;margin-left:9px"
+                           value="Add"/>
+
+
+                </div>
+
+                <div>
                     <h4>Members</h4>
 
                     <ul ng-repeat="member in members">
@@ -93,35 +103,46 @@
                                             <label class="col-sm-3 control-label">Team:</label>
 
                                             <div class="col-sm-8">
-                                                <input type="text" name="team" class="form-control input-sm"
-                                                       ng-model="selectedMember.Team" placeholder="Team" tabindex="1"
-                                                       required/>
+                                                <select id="change_team" ng-model="selectedMember.Team"
+                                                        class="form-control input-large"
+                                                        style="color:#A8A8A8">
+                                                    <option ng-repeat="team in teams" value="{{team}}">
+                                                        {{team}}
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="row" style="margin-bottom:10px;">
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label">Is Active:</label>
+                                            <label class="col-sm-3 control-label">Status:</label>
 
                                             <div class="col-sm-8">
-                                                <input type="text" name="active" class="form-control input-sm"
-                                                       ng-model="selectedMember.Active" placeholder="Active"
-                                                       tabindex="1" required/>
+                                                <select id="change_status" ng-model="selectedMember.Active"
+                                                        class="form-control input-large"
+                                                        style="color:#A8A8A8">
+                                                    <option ng-repeat="value in active_status" value="{{value}}">
+                                                        {{value}}
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
 
+
                                     <div class="row" style="margin-bottom:10px;">
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label">Location:</label>
+                                            <label class="col-sm-3 control-label">Base:</label>
 
                                             <div class="col-sm-8">
-
-                                                <input type="text" name="active" class="form-control input-sm"
-                                                       ng-model="selectedMember.Base" placeholder="Location"
-                                                       tabindex="1"
-                                                       required/>
+                                                <select id="change_base" ng-model="selectedMember.Base"
+                                                        class="form-control input-large"
+                                                        style="color:#A8A8A8">
+                                                    <option ng-repeat="base in bases" value="{{base}}">
+                                                        {{base}}
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -172,35 +193,50 @@
                                             <label class="col-sm-3 control-label">Team:</label>
 
                                             <div class="col-sm-8">
-                                                <input type="text" name="team" class="form-control input-sm"
-                                                       ng-model="member.Team" placeholder="Team" tabindex="1"
-                                                       required/>
+                                                <select id="team" ng-model="member.Team"
+                                                        ng-init="member.Team = teams[0]"
+                                                        class="form-control input-large"
+                                                        style="color:#A8A8A8">
+                                                    <option ng-repeat="team in teams" value="{{team}}">
+                                                        {{team}}
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
 
+
                                     <div class="row" style="margin-bottom:10px;">
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label">Is Active:</label>
+                                            <label class="col-sm-3 control-label">Status:</label>
 
                                             <div class="col-sm-8">
-                                                <input type="text" name="active" class="form-control input-sm"
-                                                       ng-model="member.Active" placeholder="Active"
-                                                       tabindex="1" required/>
+                                                <select id="is_active" ng-model="member.Active"
+                                                        ng-init="member.Active = Active || active_status[0]"
+                                                        class="form-control input-large"
+                                                        style="color:#A8A8A8">
+                                                    <option ng-repeat="value in active_status" value="{{value}}">
+                                                        {{value}}
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
 
+
                                     <div class="row" style="margin-bottom:10px;">
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label">Location:</label>
+                                            <label class="col-sm-3 control-label">Base:</label>
 
                                             <div class="col-sm-8">
-
-                                                <input type="text" name="active" class="form-control input-sm"
-                                                       ng-model="member.Base" placeholder="Location"
-                                                       tabindex="1"
-                                                       required/>
+                                                <select id="base" ng-model="member.Base"
+                                                        ng-init="member.Base = bases[0]"
+                                                        class="form-control input-large"
+                                                        style="color:#A8A8A8">
+                                                    <option ng-repeat="base in bases" value="{{base}}">
+                                                        {{base}}
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -223,7 +259,6 @@
                     </div>
                 </div>
             </div>
-
 
         </snap-drawers>
 
@@ -258,7 +293,6 @@
         </nav>
 
         <div id="map"></div>
-
 
     </div>
 

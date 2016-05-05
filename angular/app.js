@@ -53,6 +53,26 @@ application.controller('controller', ['$scope', 'dataFactory', 'SNAP_VERSION', '
                   mapTypeId: google.maps.MapTypeId.ROADMAP
               }
 
+    $scope.active_status = [
+        "Active",
+        "Inactive"
+    ];
+
+
+    $scope.teams = [
+        "Alpha",
+        "Bravo",
+        "Delta",
+        "Foxtrot"
+    ];
+
+    $scope.bases = [
+        "SEA",
+        "SFO",
+        "DEN",
+        "OAK"
+    ];
+
     $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
     function getRandom(min, max) {
@@ -177,8 +197,6 @@ application.controller('controller', ['$scope', 'dataFactory', 'SNAP_VERSION', '
 
         var len = $scope.members.length;
                 for (var i = 0; i < len; i++) {
-                    console.log("LAT " + $scope.members[i].Latitude);
-
                     if ($scope.members[i].Latitude != null) {
                          addMarker($scope.members[i]);
                     }
@@ -259,23 +277,28 @@ application.controller('controller', ['$scope', 'dataFactory', 'SNAP_VERSION', '
     // Edit from AWS Dynamo DB item
     function editMember(member) {
 
-
-
+console.log("updating team to " + member.Team + " for id " + member.ID);
         var keys = {
             ID: member.ID,
             Name: member.Name
         };
 
         var values = {
-            ':active': member.Active
+            ':active': member.Active,
+            ':team': member.Team,
+            ':base': member.Base
+        };
+
+        var names = {
+            '#b': 'Base'
         };
 
         var payload = {
             Key: keys,
-            UpdateExpression: "set Active = :active",
+            UpdateExpression: "set Active = :active, Team = :team, #b = :base",
+            ExpressionAttributeNames: names,
             ExpressionAttributeValues: values
         };
-
 
         var data = {
             operation: 'update',
@@ -285,7 +308,7 @@ application.controller('controller', ['$scope', 'dataFactory', 'SNAP_VERSION', '
 
         dataFactory.execute(data)
             .then(function (response) {
-               console.log("Updated Customer " + response.data);
+               console.log("Updated member " + response.data);
 
                 $scope.status = response.data;
 
