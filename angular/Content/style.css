@@ -35,6 +35,17 @@
     margin-left: 15px;
 }
 
+.btnContainer {
+    float: left;
+    height:30px;
+    margin-right:10px; ​
+}
+
+.sectionHeader {
+float: left;
+    background: #0b517d;
+}
+
 .navContainer {
     float: right;
 }

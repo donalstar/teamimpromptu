@@ -22,6 +22,8 @@
 
     <script src="config.js"></script>
     <script src="app.js"></script>
+
+
 </head>
 
 
@@ -29,11 +31,11 @@
 
 <div class="mainContainer" ng-controller="controller">
 
-
     <div class="container">
 
         <snap-drawers>
             <div snap-drawer="left">
+
                 <div class="logoContainer" style="margin:10px;">
                     <a href="">
                         <img alt="Team Manager" src="Content/images/rubicon.jpg"
@@ -41,8 +43,12 @@
                     </a>
                 </div>
 
+                <h4>MENU</h4>
+
+
                 <div>
-                    <h4>Teams</h4>
+                    <h4><img class="btnContainer"  src='Content/images/plus.png'/>Teams</h4>
+
 
                     <input type="submit" class="btn btn-primary"
                            style="padding-left:30px;padding-right:30px;margin-top:-2px;margin-left:9px"
@@ -52,7 +58,8 @@
                 </div>
 
                 <div>
-                    <h4>Members</h4>
+                    <h4><img class="btnContainer" src='Content/images/plus.png'/>Members</h4>
+
 
                     <ul ng-repeat="member in members">
                         <li><a href="" ng-click="show(member)">{{member.Name}}</a></li>
