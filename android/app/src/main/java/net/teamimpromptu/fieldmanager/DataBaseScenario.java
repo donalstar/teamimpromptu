@@ -12,63 +12,11 @@ import net.teamimpromptu.fieldmanager.db.DataBaseModel;
 import net.teamimpromptu.fieldmanager.db.PersonModel;
 import net.teamimpromptu.fieldmanager.db.StatusEnum;
 import net.teamimpromptu.fieldmanager.db.StrikeTeamModel;
-import net.teamimpromptu.fieldmanager.db.TeamModel;
 
 /**
  * Seed the database for various scenarios
  */
 public class DataBaseScenario {
-
-
-
-
-
-    public void loadTeam(Context context) {
-        String names[] = {
-                "Lorien",
-                "Donal",
-                "Perry",
-                "Jonas"
-        };
-
-        double locations[][] = {
-                {37.7837261, -122.3960743},
-                {37.782319, -122.410485},
-                {37.788865, -122.400895},
-                {37.787220, -122.398819}
-        };
-
-        StatusEnum status[] = {
-                StatusEnum.NORMAL,
-                StatusEnum.NORMAL,
-                StatusEnum.SERIOUS,
-                StatusEnum.GUARDED,
-                StatusEnum.CRITICAL
-        };
-
-
-        for (int i = 0; i < names.length; i++) {
-            TeamModel model = new TeamModel();
-            model.setDefault();
-
-            model.setName(names[i]);
-
-
-            Location location = new Location(names[i]);
-            location.setLatitude(locations[i][0]);
-            location.setLongitude(locations[i][1]);
-
-            model.setLocation(location);
-
-            model.setStatus(status[i]);
-
-            ContextList list = createContextList(CommandEnum.TEAM_UPDATE, model, context);
-
-            CommandFactory.execute(list);
-        }
-
-
-    }
 
 
     private ContextList createContextList(CommandEnum command, DataBaseModel model, Context context) {

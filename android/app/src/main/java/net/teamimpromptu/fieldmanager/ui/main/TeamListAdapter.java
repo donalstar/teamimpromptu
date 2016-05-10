@@ -11,7 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import net.rubicon.indepth.R;
-import net.teamimpromptu.fieldmanager.db.TeamModel;
+import net.teamimpromptu.fieldmanager.db.PersonModel;
+import net.teamimpromptu.fieldmanager.db.StatusEnum;
 import net.teamimpromptu.fieldmanager.ui.utility.StatusIndicatorEnum;
 
 
@@ -55,11 +56,11 @@ public class TeamListAdapter extends RecyclerView.Adapter<TeamListAdapter.ViewHo
         if (_cursor != null) {
             _cursor.moveToPosition(position);
 
-            final TeamModel model = new TeamModel();
+            final PersonModel model = new PersonModel();
             model.setDefault();
             model.fromCursor(_cursor);
 
-            int itemIconResourceId = StatusIndicatorEnum.getListImageResourceForStatus(model.getStatus());
+            int itemIconResourceId = StatusIndicatorEnum.getListImageResourceForStatus(StatusEnum.NORMAL);
 
             String itemName = model.getName();
 

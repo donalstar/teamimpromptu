@@ -39,9 +39,6 @@ public class ContentFacade {
             case STRIKE_TEAM_UPDATE:
                 contentUri = StrikeTeamTable.CONTENT_URI;
                 break;
-            case TEAM_UPDATE:
-                contentUri = TeamTable.CONTENT_URI;
-                break;
             default:
                 break;
         }
@@ -70,18 +67,17 @@ public class ContentFacade {
     }
 
 
-
     /**
      * @param context
      * @return
      */
-    public List<TeamModel> selectTeamAll(Context context) {
-        List<TeamModel> result = new ArrayList<>();
+    public List<PersonModel> selectPersonAll(Context context) {
+        List<PersonModel> result = new ArrayList<>();
 
-        Cursor cursor = context.getContentResolver().query(TeamTable.CONTENT_URI, null, null, null, null);
+        Cursor cursor = context.getContentResolver().query(PersonTable.CONTENT_URI, null, null, null, null);
         if (cursor.moveToFirst()) {
             do {
-                TeamModel model = new TeamModel();
+                PersonModel model = new PersonModel();
                 model.setDefault();
                 model.fromCursor(cursor);
                 result.add(model);
@@ -112,5 +108,25 @@ public class ContentFacade {
     }
 
 
+    /**
+     * @param serverId
+     * @param context
+     * @return
+     */
+    public PersonModel selectPersonByServerId(int serverId, Context context) {
+        PersonModel model = new PersonModel();
+        model.setDefault();
+        String selection = "server_id=?";
 
+        String[] selectionArgs = new String[]{String.valueOf(serverId)};
+
+        Cursor cursor = context.getContentResolver().query(PersonTable.CONTENT_URI, null, selection, selectionArgs, null);
+        if (cursor.moveToFirst()) {
+            model.fromCursor(cursor);
+        }
+
+        cursor.close();
+
+        return (model.getId() == 0L) ? null : model;
+    }
 }

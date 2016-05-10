@@ -2,6 +2,7 @@ package net.teamimpromptu.fieldmanager.db;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.location.Location;
 import android.net.Uri;
 
 import java.io.Serializable;
@@ -10,8 +11,10 @@ import java.io.Serializable;
  *
  */
 public class PersonModel implements DataBaseModel, Serializable {
+    public static final String PROVIDER = "FieldManager";
 
     private Long _id;
+    private Long _serverId;
     private String _name;
     private String _username;
     private String _role;
@@ -19,11 +22,13 @@ public class PersonModel implements DataBaseModel, Serializable {
     private String _skills;
     private String _certifications;
     private String _team;
+    transient private Location _location;
 
     @Override
     public void setDefault() {
         _id = 0L;
 
+        _serverId = 0L;
         _name = "Unknown";
         _username = "Unknown";
         _role = "Unknown";
@@ -31,6 +36,8 @@ public class PersonModel implements DataBaseModel, Serializable {
         _skills = "Unknown";
         _certifications = "Unknown";
         _team = "Unknown";
+
+        _location = new Location(PROVIDER);
     }
 
     @Override
@@ -38,12 +45,15 @@ public class PersonModel implements DataBaseModel, Serializable {
         ContentValues cv = new ContentValues();
 
         cv.put(PersonTable.Columns.NAME, _name);
+        cv.put(PersonTable.Columns.SERVER_ID, _serverId);
         cv.put(PersonTable.Columns.USERNAME, _username);
         cv.put(PersonTable.Columns.ROLE, _role);
         cv.put(PersonTable.Columns.STATUS, _status);
         cv.put(PersonTable.Columns.SKILLS, _skills);
         cv.put(PersonTable.Columns.CERTIFICATIONS, _certifications);
         cv.put(PersonTable.Columns.TEAM, _team);
+        cv.put(PersonTable.Columns.LATITUDE, _location.getLatitude());
+        cv.put(PersonTable.Columns.LONGITUDE, _location.getLongitude());
 
         return cv;
     }
@@ -52,6 +62,7 @@ public class PersonModel implements DataBaseModel, Serializable {
     @Override
     public void fromCursor(Cursor cursor) {
         _id = cursor.getLong(cursor.getColumnIndex(PersonTable.Columns._ID));
+        _serverId = cursor.getLong(cursor.getColumnIndex(PersonTable.Columns.SERVER_ID));
         _name = cursor.getString(cursor.getColumnIndex(PersonTable.Columns.NAME));
         _username = cursor.getString(cursor.getColumnIndex(PersonTable.Columns.USERNAME));
         _role = cursor.getString(cursor.getColumnIndex(PersonTable.Columns.ROLE));
@@ -59,16 +70,20 @@ public class PersonModel implements DataBaseModel, Serializable {
         _skills = cursor.getString(cursor.getColumnIndex(PersonTable.Columns.SKILLS));
         _certifications = cursor.getString(cursor.getColumnIndex(PersonTable.Columns.CERTIFICATIONS));
         _team = cursor.getString(cursor.getColumnIndex(PersonTable.Columns.TEAM));
+
+        _location = new Location(PROVIDER);
+        _location.setLatitude(cursor.getDouble(cursor.getColumnIndex(PersonTable.Columns.LATITUDE)));
+        _location.setLongitude(cursor.getDouble(cursor.getColumnIndex(PersonTable.Columns.LONGITUDE)));
     }
 
     @Override
     public String getTableName() {
-        return TeamTable.TABLE_NAME;
+        return PersonTable.TABLE_NAME;
     }
 
     @Override
     public Uri getTableUri() {
-        return TeamTable.CONTENT_URI;
+        return PersonTable.CONTENT_URI;
     }
 
     public Long getId() {
@@ -77,6 +92,14 @@ public class PersonModel implements DataBaseModel, Serializable {
 
     public void setId(Long id) {
         _id = id;
+    }
+
+    public Long getServerId() {
+        return _serverId;
+    }
+
+    public void setServerId(Long _serverId) {
+        this._serverId = _serverId;
     }
 
     public String getName() {
@@ -133,5 +156,13 @@ public class PersonModel implements DataBaseModel, Serializable {
 
     public void setUsername(String _username) {
         this._username = _username;
+    }
+
+    public Location getLocation() {
+        return _location;
+    }
+
+    public void setLocation(Location location) {
+        this._location = location;
     }
 }

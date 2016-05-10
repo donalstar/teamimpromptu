@@ -18,7 +18,6 @@ import android.widget.TextView;
 import net.rubicon.indepth.R;
 import net.teamimpromptu.fieldmanager.chain.CommandFacade;
 import net.teamimpromptu.fieldmanager.db.PersonModel;
-import net.teamimpromptu.fieldmanager.db.ServerFacade;
 
 
 public class ProfileFragment extends Fragment implements FragmentContext {
@@ -71,11 +70,11 @@ public class ProfileFragment extends Fragment implements FragmentContext {
 
         Spinner dropdown = (Spinner) view.findViewById(R.id.status);
 
-        ServerFacade serverFacade = ServerFacade.getInstance(getActivity());
-
-        String statusFromServer = serverFacade.get("STATUS");
-
-        Log.i(LOG_TAG, "STATUS from server " + statusFromServer);
+//        ServerFacade serverFacade = ServerFacade.getInstance(getActivity());
+//
+//        String statusFromServer = serverFacade.get("STATUS");
+//
+//        Log.i(LOG_TAG, "STATUS from server " + statusFromServer);
 
         int index = person.getStatus().equals("active") ? 0 : 1;
 

@@ -20,7 +20,7 @@ import android.view.ViewGroup;
 
 import net.rubicon.indepth.R;
 import net.teamimpromptu.fieldmanager.db.DataBaseTable;
-import net.teamimpromptu.fieldmanager.db.TeamTable;
+import net.teamimpromptu.fieldmanager.db.PersonTable;
 import net.teamimpromptu.fieldmanager.ui.utility.ToastHelper;
 
 
@@ -36,7 +36,7 @@ public class TeamListFragment extends Fragment implements FragmentContext, Loade
     private TeamListAdapter _adapter;
 
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        DataBaseTable table = new TeamTable();
+        DataBaseTable table = new PersonTable();
 
         String[] projection = table.getDefaultProjection();
 
@@ -45,7 +45,7 @@ public class TeamListFragment extends Fragment implements FragmentContext, Loade
         String[] selectionArgs = null;
 
         return new CursorLoader(getActivity(),
-                TeamTable.CONTENT_URI, projection, selection, selectionArgs, null);
+                PersonTable.CONTENT_URI, projection, selection, selectionArgs, null);
     }
 
 

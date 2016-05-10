@@ -8,14 +8,11 @@ import android.content.IntentFilter;
 import android.util.Log;
 import android.widget.Toast;
 
-import net.teamimpromptu.fieldmanager.db.ServerFacade;
+import net.teamimpromptu.fieldmanager.db.DatabaseSync;
+import net.teamimpromptu.fieldmanager.service.ServerFacade;
 import net.teamimpromptu.fieldmanager.ui.utility.ApplicationProperties;
 import net.teamimpromptu.fieldmanager.ui.utility.PermissionsHandler;
 import net.teamimpromptu.fieldmanager.ui.utility.UserPreferenceHelper;
-import net.teamimpromptu.fieldmanager.ui.utility.WebService;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -26,6 +23,8 @@ import java.io.IOException;
 public class FieldManagerApplication extends Application {
     public static final String LOG_TAG = FieldManagerApplication.class.getName();
 
+
+    private ServerFacade _serverFacade;
     private UserPreferenceHelper _uph;
 
     @Override
@@ -49,6 +48,7 @@ public class FieldManagerApplication extends Application {
      * @param properties
      */
     private void initialize(ApplicationProperties properties) {
+        _serverFacade = ServerFacade.createInstance(this);
 
         _uph = new UserPreferenceHelper();
         if (_uph.isEmptyPreferences(this)) {
@@ -66,40 +66,7 @@ public class FieldManagerApplication extends Application {
             initializeDatabase();
         }
 
-        ServerFacade serverFacade = ServerFacade.getInstance(getApplicationContext());
-
-        serverFacade.set("STATUS", "ACTIVE");
-
-        invokeRestService();
-
         Log.i(LOG_TAG, "Application created");
-    }
-
-    private void invokeRestService() {
-        Log.i(LOG_TAG, "invokeRestService");
-
-        String apiId = "9ph1zj3fxg";
-        String resourcePath = "DynamoDBManager4";
-
-        String params = null;
-
-        try {
-            JSONObject parent = new JSONObject();
-            JSONObject payload = new JSONObject();
-
-            payload.put("username", "adm");
-            payload.put("password", "pwd");
-            parent.put("operation", "echo");
-            parent.put("payload", payload);
-
-            params = parent.toString();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        new WebService(
-                "https://" + apiId + ".execute-api.us-east-1.amazonaws.com/prod/" + resourcePath,
-                params).execute();
     }
 
 
@@ -125,6 +92,7 @@ public class FieldManagerApplication extends Application {
             doDatabaseInit();
         }
 
+        DatabaseSync.sync(this);
 
     }
 
@@ -133,9 +101,7 @@ public class FieldManagerApplication extends Application {
 
         DataBaseScenario scenario = new DataBaseScenario();
 
-        scenario.loadTeam(this);
         scenario.loadStrikeTeams(this);
-        scenario.loadPersons(this);
     }
 
 

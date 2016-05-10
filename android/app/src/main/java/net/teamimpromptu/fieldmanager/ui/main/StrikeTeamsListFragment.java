@@ -21,7 +21,6 @@ import android.view.ViewGroup;
 import net.rubicon.indepth.R;
 import net.teamimpromptu.fieldmanager.db.DataBaseTable;
 import net.teamimpromptu.fieldmanager.db.StrikeTeamTable;
-import net.teamimpromptu.fieldmanager.db.TeamTable;
 
 
 public class StrikeTeamsListFragment extends Fragment implements FragmentContext, LoaderManager.LoaderCallbacks<Cursor> {
@@ -38,7 +37,7 @@ public class StrikeTeamsListFragment extends Fragment implements FragmentContext
     private FloatingActionButton _fab;
 
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        DataBaseTable table = new TeamTable();
+        DataBaseTable table = new StrikeTeamTable();
 
         String[] projection = table.getDefaultProjection();
 

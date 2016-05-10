@@ -23,9 +23,6 @@ public class DataBaseProvider extends ContentProvider {
 
     //URI Matcher Targets
 
-    private static final int URI_MATCH_TEAM = 3;
-    private static final int URI_MATCH_TEAM_ID = 4;
-
     private static final int URI_MATCH_STRIKE_TEAM = 5;
     private static final int URI_MATCH_STRIKE_TEAM_ID = 6;
 
@@ -42,9 +39,6 @@ public class DataBaseProvider extends ContentProvider {
         super();
 
         _tablesLookup = new HashMap<>();
-
-        _tablesLookup.put(URI_MATCH_TEAM, new MatcherMetadata(new TeamTable(), false));
-        _tablesLookup.put(URI_MATCH_TEAM_ID, new MatcherMetadata(new TeamTable(), true));
 
         _tablesLookup.put(URI_MATCH_STRIKE_TEAM, new MatcherMetadata(new StrikeTeamTable(), false));
         _tablesLookup.put(URI_MATCH_STRIKE_TEAM_ID, new MatcherMetadata(new StrikeTeamTable(), true));

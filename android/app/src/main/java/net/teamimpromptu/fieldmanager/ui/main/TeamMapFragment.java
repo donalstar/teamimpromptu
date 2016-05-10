@@ -27,7 +27,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import net.rubicon.indepth.R;
 import net.teamimpromptu.fieldmanager.db.ContentFacade;
-import net.teamimpromptu.fieldmanager.db.TeamModel;
+import net.teamimpromptu.fieldmanager.db.PersonModel;
+import net.teamimpromptu.fieldmanager.db.StatusEnum;
 import net.teamimpromptu.fieldmanager.ui.utility.StatusIndicatorEnum;
 import net.teamimpromptu.fieldmanager.ui.utility.ToastHelper;
 
@@ -51,7 +52,7 @@ public class TeamMapFragment extends SupportMapFragment implements FragmentConte
 
     private ContentFacade _contentFacade = new ContentFacade();
 
-    private Map<Marker, TeamModel> _markers = new HashMap<>();
+    private Map<Marker, PersonModel> _markers = new HashMap<>();
 
     public static TeamMapFragment newInstance(Bundle bundle) {
         TeamMapFragment fragment = new TeamMapFragment();
@@ -93,7 +94,7 @@ public class TeamMapFragment extends SupportMapFragment implements FragmentConte
 
         final GoogleMap map = getMap();
 
-        List<TeamModel> siteModels = _contentFacade.selectTeamAll(getActivity());
+        List<PersonModel> personModels = _contentFacade.selectPersonAll(getActivity());
 
         // info window for marker
         map.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
@@ -123,25 +124,25 @@ public class TeamMapFragment extends SupportMapFragment implements FragmentConte
         });
 
 
-        for (TeamModel siteModel : siteModels) {
-            int iconResourceId = StatusIndicatorEnum.getMapImageResourceForStatus(siteModel.getStatus());
+        for (PersonModel model : personModels) {
+            int iconResourceId = StatusIndicatorEnum.getMapImageResourceForStatus(StatusEnum.NORMAL);
 
             MarkerOptions markerOptions = new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(iconResourceId));
 
             LatLng siteLocation =
-                    new LatLng(siteModel.getLocation().getLatitude(), siteModel.getLocation().getLongitude());
+                    new LatLng(model.getLocation().getLatitude(), model.getLocation().getLongitude());
 
             Marker marker = map.addMarker(markerOptions
                     .position(siteLocation)
-                    .title(siteModel.getName()));
+                    .title(model.getName()));
 
-            _markers.put(marker, siteModel);
+            _markers.put(marker, model);
         }
 
-        if (!siteModels.isEmpty() && (latLng == null)) {
-            TeamModel siteModel = siteModels.get(0);
+        if (!personModels.isEmpty() && (latLng == null)) {
+            PersonModel model = personModels.get(0);
 
-            Location location = siteModel.getLocation();
+            Location location = model.getLocation();
 
             latLng = new LatLng(location.getLatitude(), location.getLongitude());
         }

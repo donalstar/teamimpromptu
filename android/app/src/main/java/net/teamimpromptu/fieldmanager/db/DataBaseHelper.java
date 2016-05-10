@@ -16,8 +16,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String LOG_TAG = DataBaseHelper.class.getName();
 
     public DataBaseHelper(Context context) {
-        super(context, DATABASE_FILE_NAME, null, DATABASE_VERSION);
-//        super(context, context.getExternalFilesDir(null).getAbsolutePath() + "/" + DATABASE_FILE_NAME, null, DATABASE_VERSION);
+//        super(context, DATABASE_FILE_NAME, null, DATABASE_VERSION);
+        super(context, context.getExternalFilesDir(null).getAbsolutePath() + "/" + DATABASE_FILE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -25,7 +25,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Log.i(LOG_TAG, "onCreate");
 
         db.execSQL(PersonTable.CREATE_TABLE);
-        db.execSQL(TeamTable.CREATE_TABLE);
         db.execSQL(StrikeTeamTable.CREATE_TABLE);
 
     }

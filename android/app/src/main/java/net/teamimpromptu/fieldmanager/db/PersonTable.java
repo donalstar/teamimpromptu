@@ -26,16 +26,20 @@ public class PersonTable implements DataBaseTable {
 
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " ("
             + Columns._ID + " INTEGER PRIMARY KEY,"
+            + Columns.SERVER_ID + " INTEGER,"
             + Columns.NAME + " TEXT NOT NULL,"
             + Columns.USERNAME + " TEXT NOT NULL,"
             + Columns.ROLE + " TEXT NOT NULL,"
             + Columns.STATUS + " TEXT NOT NULL,"
             + Columns.SKILLS + " TEXT NOT NULL,"
             + Columns.CERTIFICATIONS + " TEXT NOT NULL,"
-            + Columns.TEAM + " TEXT NOT NULL"
+            + Columns.TEAM + " TEXT NOT NULL,"
+            + Columns.LATITUDE + " FLOAT NOT NULL,"
+            + Columns.LONGITUDE + " FLOAT NOT NULL"
             + ");";
 
     public static final class Columns implements BaseColumns {
+        public static final String SERVER_ID = "server_id";
         public static final String NAME = "name";
         public static final String USERNAME = "username";
         public static final String ROLE = "role";
@@ -43,6 +47,8 @@ public class PersonTable implements DataBaseTable {
         public static final String SKILLS = "skills";
         public static final String CERTIFICATIONS = "certifications";
         public static final String TEAM = "team";
+        public static final String LATITUDE = "latitude";
+        public static final String LONGITUDE = "longitude";
     }
 
     //
@@ -50,6 +56,7 @@ public class PersonTable implements DataBaseTable {
 
     static {
         PROJECTION_MAP.put(PersonTable.Columns._ID, PersonTable.Columns._ID);
+        PROJECTION_MAP.put(PersonTable.Columns.SERVER_ID, PersonTable.Columns.SERVER_ID);
         PROJECTION_MAP.put(PersonTable.Columns.NAME, PersonTable.Columns.NAME);
         PROJECTION_MAP.put(PersonTable.Columns.USERNAME, PersonTable.Columns.USERNAME);
         PROJECTION_MAP.put(PersonTable.Columns.ROLE, PersonTable.Columns.ROLE);
@@ -57,6 +64,8 @@ public class PersonTable implements DataBaseTable {
         PROJECTION_MAP.put(Columns.SKILLS, Columns.SKILLS);
         PROJECTION_MAP.put(Columns.CERTIFICATIONS, Columns.CERTIFICATIONS);
         PROJECTION_MAP.put(Columns.TEAM, PersonTable.Columns.TEAM);
+        PROJECTION_MAP.put(Columns.LATITUDE, PersonTable.Columns.LATITUDE);
+        PROJECTION_MAP.put(Columns.LONGITUDE, PersonTable.Columns.LONGITUDE);
     }
 
     @Override
